@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1006304062807",
+    "project_id": "pfadi-uro",
+    "storage_bucket": "pfadi-uro.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1006304062807:android:ef9aa005f5e42f89eda212",
+        "android_client_info": {
+          "package_name": "com.pfadi_uro.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGj9YDVjv0icP5EkEEFNlB1ukZAe-7x-Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
