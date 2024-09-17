@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:pfadi_uro/pres/cstmColors.dart';
 import 'firebase_options.dart';
 
 
@@ -14,8 +16,14 @@ void main() async{
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  runApp(const MaterialApp(
-    home: Home()
+  runApp(MaterialApp(
+
+    theme: ThemeData(
+      fontFamily: GoogleFonts.josefinSans().fontFamily,
+      //fontFamily: GoogleFonts.abel
+    ),
+
+    home: const Home()
   ));
 }
 
@@ -24,36 +32,63 @@ class SandBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.green[100],
-      body: const Center(
+    return Card(
+        margin: const EdgeInsets.only(bottom: 10),
+        color: Cstmcolors.green,
         child: Column(
           children: [
 
             //Title
-            Text("WILLKOMMEN", style: TextStyle(
-              fontSize: 40,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 2,
-            ),),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(width: 10,),
+                Text("group", style: TextStyle(
+                  color: Cstmcolors.white,
+                  fontSize: 20,
+                ),),
 
-            //Login Card
-            Card(
-              color: Colors.white,
-              margin: const EdgeInsets.all(50),
-              child: Column(
-                children: [
-                  Row(
+                const SizedBox(width: 10),
+
+                Text("date", style: const TextStyle(
+                  color: Colors.black45,
+                  fontSize: 20,
+                ),),
+
+                Card(
+
+                  child: Column(
                     children: [
-                      Text("data"),
+                      Row(
+                        children: [
+                          const Icon(Icons.access_time_outlined),
+                          Text("start_time"),
+
+                          const SizedBox(width: 20,),
+
+                          const Icon(Icons.location_on_outlined),
+                          Text("start_loc"),
+                        ],
+                      ),
+
+                      Text("|", style: TextStyle(
+                        backgroundColor: Cstmcolors.black,
+                      ),),
+
                     ],
                   ),
-                ],
-              ),
+
+                ),
+
+              ],
+
+
             ),
-          ]
-        ),
-      ),
+
+            //Body
+
+          ],
+        )
     );
   }
 }
