@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:pfadi_uro/pages/Stuffen/anschlaege/biber.dart';
 import 'package:pfadi_uro/pages/start/login.dart';
 
 import 'package:pfadi_uro/pres/cstmColors.dart';
@@ -73,7 +74,7 @@ class HomeView extends StatelessWidget {
                 gestureTapCallback: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const Home()),
+                    MaterialPageRoute(builder: (context) => const BiberAnschlaege()),
                   );
                 }
               ),
@@ -89,7 +90,7 @@ class HomeView extends StatelessWidget {
                   gestureTapCallback: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const Home()),
+                      MaterialPageRoute(builder: (context) => const LoginCard()),
                     );
                   }
               ),
@@ -213,8 +214,9 @@ class AnschlagCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Cstmcolors.white,
       child: GestureDetector(
-        onTap: gestureTapCallback,
+        onTap: gestureTapCallback, //#Todo Fixx bug (Cant click everywhere for gesture call back)
         child: Row(
           children: [
 
