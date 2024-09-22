@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pfadi_uro/pres/cstmColors.dart';
+import 'package:pfadi_uro/pres/cstm_colors.dart';
 import 'firebase_options.dart';
 
-
 import 'package:pfadi_uro/pages/home.dart';
-import 'package:pfadi_uro/pages/start/tabbar.dart';
+
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,12 +19,12 @@ void main() async{
 
     theme: ThemeData(
       fontFamily: GoogleFonts.josefinSans().fontFamily,
-      //fontFamily: GoogleFonts.abel
     ),
 
     home: const Home()
   ));
 }
+
 
 class SandBox extends StatelessWidget {
   const SandBox({super.key});

@@ -1,31 +1,29 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:pfadi_uro/pages/Stuffen/anschlaege/biber.dart';
 import 'package:pfadi_uro/pages/start/login.dart';
 
-import 'package:pfadi_uro/pres/cstmColors.dart';
+import 'package:pfadi_uro/pres/cstm_colors.dart';
+
 
 class Home extends StatelessWidget {
   const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Cstmcolors.light_blue,
+    return const Scaffold(
 
       //Home View
-      body: const HomeView(),
+      body: HomeView(),
 
       // Bottom Nav Bar
-      bottomNavigationBar: const BottomNavBar(),
+      bottomNavigationBar: BottomNavBar(),
     );
   }
 }
 
 
-// -- Home View --
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
@@ -33,7 +31,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      backgroundColor: Colors.black12,
+      backgroundColor: Cstmcolors.light_blue,
 
       body: Padding (
         padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
@@ -67,9 +65,9 @@ class HomeView extends StatelessWidget {
               AnschlagCard(
                 group: "Biber",
                 date: "13.05.",
-                start_loc: "Urdorf",
-                end_loc: "Weihermatt",
-                start_time: "13:00",
+                start_loc: "Bahnhof Urdorf",
+                end_loc: "Bahnhof Urdorf",
+                start_time: "15:00",
                 end_time: "17:00",
                 gestureTapCallback: () {
                   Navigator.push(
@@ -83,24 +81,8 @@ class HomeView extends StatelessWidget {
               AnschlagCard(
                   group: "Wölfe",
                   date: "13.05.",
-                  start_loc: "Urdorf",
-                  end_loc: "Weihermatt",
-                  start_time: "13:00",
-                  end_time: "17:00",
-                  gestureTapCallback: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const LoginCard()),
-                    );
-                  }
-              ),
-
-              //Pfadis
-              AnschlagCard(
-                  group: "Pfadis",
-                  date: "13.05.",
-                  start_loc: "Urdorf",
-                  end_loc: "Weihermatt",
+                  start_loc: "Wasserreservoir",
+                  end_loc: "Bahnhof Urdorf",
                   start_time: "13:00",
                   end_time: "17:00",
                   gestureTapCallback: () {
@@ -110,6 +92,41 @@ class HomeView extends StatelessWidget {
                     );
                   }
               ),
+
+              //Pfadis
+              AnschlagCard(
+                  group: "Pfadis",
+                  date: "13.05.",
+                  start_loc: "Chinese Hüttli",
+                  end_loc: "Holzschopf",
+                  start_time: "13:00",
+                  end_time: "17:00",
+                  gestureTapCallback: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Home()),
+                    );
+                  }
+              ),
+
+              const SizedBox(height: 50,),
+
+              // News
+
+              //News Title
+              Row(
+                children: [
+                  Icon(Icons.local_fire_department, color: Cstmcolors.black,),
+                  const SizedBox(width: 5),
+                  Text(" News", style: TextStyle(
+                    fontSize: 30,
+                    color: Cstmcolors.black,
+                  ),),
+                ],
+              ),
+
+              //News Cards
+              const NewsCardHolder(cardList: ["1", "2", "3"],),
 
             ],
           ),
@@ -162,7 +179,7 @@ class TopBar extends StatelessWidget {
                     fontSize: 30,
                   ),),
 
-                  Text("Travo!", style: TextStyle( //#Todo Intergrade costum Name with Database
+                  Text("Travo!", style: TextStyle( //#Todo get name from Database
                     color: Cstmcolors.black,
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
@@ -190,7 +207,6 @@ class TopBar extends StatelessWidget {
 }
 
 
-// -- Card Presets for "Anschläge" --
 class AnschlagCard extends StatelessWidget {
   const AnschlagCard({
     super.key,
@@ -216,7 +232,7 @@ class AnschlagCard extends StatelessWidget {
     return Card(
       color: Cstmcolors.white,
       child: GestureDetector(
-        onTap: gestureTapCallback, //#Todo Fixx bug (Cant click everywhere for gesture call back)
+        onTap: gestureTapCallback, //#Todo Fixx bug (Cant click everywhere inside the box)
         child: Row(
           children: [
 
@@ -307,7 +323,82 @@ class AnschlagCard extends StatelessWidget {
 }
 
 
-// -- Bottom Navigarion Bar --
+// -- News Card --
+class NewsCardHolder extends StatelessWidget {
+  const NewsCardHolder({
+    super.key,
+    required this.cardList,
+  });
+
+  final List cardList; //Todo get news card list data from DB
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 20),
+      height: 300,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: <Widget>[
+
+          for (var item in cardList) Container(
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(
+                Radius.circular(12)
+              ),
+              color: Cstmcolors.dark_green,
+            ),
+
+            width: 250,
+            margin: const EdgeInsets.only(right: 10),
+
+            child: Column(
+              children: [
+
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(12),
+                        topRight: Radius.circular(12),
+                    ),
+                    color: Cstmcolors.white,
+                  ),
+
+                  width: 250,
+                  height: 150,
+
+                  child: const Center(
+                    child: Text("Image"),
+                  ),
+                ),
+
+                const SizedBox(height: 15,),
+
+                Text("Titel", style: TextStyle(
+                  fontSize: 23,
+                  color: Cstmcolors.white,
+                ),),
+
+                const SizedBox(height: 10,),
+
+                Center(
+                  child: Text("Description", style: TextStyle(
+                    fontSize: 15,
+                    color: Cstmcolors.black,
+                  ),),
+                )
+
+              ],
+
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({super.key});
 
@@ -324,7 +415,7 @@ class BottomNavBar extends StatelessWidget {
           text: "Home",
         ),
         GButton(
-          icon: Icons.local_fire_department,
+          icon: Icons.article,
           text: "Anschläge",
         ),
         GButton(

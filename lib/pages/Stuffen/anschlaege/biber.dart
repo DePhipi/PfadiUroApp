@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../pres/cstmColors.dart';
+import '../../../pres/cstm_colors.dart';
 
 class BiberAnschlaege extends StatelessWidget {
   const BiberAnschlaege({super.key});
@@ -17,7 +17,7 @@ class BiberAnschlaege extends StatelessWidget {
               height: 70,
               decoration: BoxDecoration(
                 color: Cstmcolors.green,
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(12),
                   bottomRight: Radius.circular(12),
                 )
