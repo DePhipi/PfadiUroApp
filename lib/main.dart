@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pfadi_uro/pages/start/login.dart';
 import 'package:pfadi_uro/pres/cstm_colors.dart';
 import 'firebase_options.dart';
 
@@ -21,7 +22,7 @@ void main() async{
       fontFamily: GoogleFonts.josefinSans().fontFamily,
     ),
 
-    home: const Home()
+    home: const LoginView()
   ));
 }
 
