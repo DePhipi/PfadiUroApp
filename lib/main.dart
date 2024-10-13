@@ -49,7 +49,7 @@ class SandBox extends StatelessWidget {
 
                 const SizedBox(width: 10),
 
-                Text("date", style: const TextStyle(
+                const Text("date", style: TextStyle(
                   color: Colors.black45,
                   fontSize: 20,
                 ),),
@@ -58,14 +58,14 @@ class SandBox extends StatelessWidget {
 
                   child: Column(
                     children: [
-                      Row(
+                      const Row(
                         children: [
-                          const Icon(Icons.access_time_outlined),
+                          Icon(Icons.access_time_outlined),
                           Text("start_time"),
 
-                          const SizedBox(width: 20,),
+                          SizedBox(width: 20,),
 
-                          const Icon(Icons.location_on_outlined),
+                          Icon(Icons.location_on_outlined),
                           Text("start_loc"),
                         ],
                       ),
