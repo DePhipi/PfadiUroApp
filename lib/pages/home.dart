@@ -46,7 +46,7 @@ class HomeView extends StatelessWidget {
               const SizedBox(height: 30,),
 
               //Anschläge
-
+              
               //Anschläge Title
               Row(
                 children: [
@@ -59,10 +59,8 @@ class HomeView extends StatelessWidget {
                 ],
               ),
 
-              const SizedBox(height: 5,),
-
               //Biber
-              AnschlagCard(
+              AnschlagCard( //Todo get Data from DB
                 group: "Biber",
                 date: "13.05.",
                 start_loc: "Bahnhof Urdorf",
@@ -235,7 +233,6 @@ class AnschlagCard extends StatelessWidget {
         onTap: gestureTapCallback, //#Todo Fixx bug (Cant click everywhere inside the box)
         child: Row(
           children: [
-
             Container(
               decoration: BoxDecoration(
                   color: Cstmcolors.green,
@@ -244,23 +241,26 @@ class AnschlagCard extends StatelessWidget {
                       bottomLeft: Radius.circular(12))
               ),
               padding: const EdgeInsets.all(20),
-              child: Text(date, style: TextStyle(
-                color: Cstmcolors.white,
-                fontSize: 25,
-              ),),
-            ),
+              width: 115,
+              child: Text(group, style: TextStyle(
+                  color: Cstmcolors.white,
+                  fontSize: 25,
+                  ),),
+                ),
 
-            SizedBox(width: 10,),
+            const SizedBox(width: 5,),
 
             Container(
+
+              //color: Colors.white,
               child: Row(
                 children: [
-                  Text(group, style: TextStyle(
-                    fontSize: 30,
-                    color: Cstmcolors.black,
-                  ),),
+                  //Text(group, style: TextStyle(
+                  //  fontSize: 25,
+                  //  color: Cstmcolors.black,
+                  //),),
 
-                  const SizedBox(width: 40,), //#Todo Start each item on 2 Row on same axis
+                  const SizedBox(width: 10,),
 
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -270,27 +270,22 @@ class AnschlagCard extends StatelessWidget {
                         children: [
                           Text(start_time, style: TextStyle(
                             color: Cstmcolors.black,
-                            fontSize: 17
+                            fontSize: 15
                           ),),
 
-                          SizedBox(width: 10,),
+                          const SizedBox(width: 10,),
 
                           Icon(Icons.location_on, size: 17, color: Cstmcolors.gray,),
                           Text(start_loc, style: TextStyle(
                               color: Cstmcolors.gray,
-                              fontSize: 17
+                              fontSize: 15
                           ),)
                         ],
                       ),
 
-                      Row(
+                      const Row(
                         children: [
-                          SizedBox(width: 6,),
-
-                          Text("|", style: TextStyle(
-                            color: Cstmcolors.black,
-                            fontSize: 17,
-                          ),),
+                          Icon(Icons.more_vert, size: 20,),
                         ],
                       ),
 
@@ -298,7 +293,7 @@ class AnschlagCard extends StatelessWidget {
                         children: [
                           Text(end_time, style: TextStyle(
                               color: Cstmcolors.black,
-                              fontSize: 17
+                              fontSize: 15
                           ),),
 
                           SizedBox(width: 10,),
@@ -306,7 +301,7 @@ class AnschlagCard extends StatelessWidget {
                           Icon(Icons.location_on, size: 17, color: Cstmcolors.gray,),
                           Text(end_loc, style: TextStyle(
                               color: Cstmcolors.gray,
-                              fontSize: 17
+                              fontSize: 15
                           ),)
                         ],
                       ),
@@ -420,7 +415,7 @@ class BottomNavBar extends StatelessWidget {
         ),
         GButton(
           icon: Icons.people,
-          text: "Stuffen",
+          text: "Anmeldungen",
         ),
         GButton(
           icon: Icons.calendar_month,
