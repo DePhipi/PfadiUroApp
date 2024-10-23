@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pfadi_uro/pages/start/login.dart';
 
 import '../../pres/cstm_colors.dart';
-import '../auth_service.dart';
+import '../Services/auth_service.dart';
 import '../home.dart';
 
 class SignUpView extends StatelessWidget {
@@ -28,7 +28,7 @@ class SignUpView extends StatelessWidget {
 
                   const SizedBox(height: 70,),
 
-                  const Text("SIGNUP", style: TextStyle(
+                  const Text("ACCOUNT ERSTELLEN", style: TextStyle(
                     fontSize: 35,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 2,
@@ -95,8 +95,9 @@ class InputFields extends StatefulWidget {
 
 class _InputFieldsState extends State<InputFields> {
 
-  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   bool _isTextObscured = true;
 
@@ -108,6 +109,29 @@ class _InputFieldsState extends State<InputFields> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+
+        //User Name Input Field
+        TextField(
+          controller: _userNameController,
+          cursorColor: Cstmcolors.black,
+          style: TextStyle(
+            color: Cstmcolors.black,
+          ),
+
+          decoration: InputDecoration(
+            focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Cstmcolors.black)
+            ),
+            icon: Icon(Icons.person, color: Cstmcolors.green,),
+            labelText: "Benutzername",
+            labelStyle: TextStyle(
+              color: Cstmcolors.black,
+            ),
+
+          ),
+        ),
+
+        const SizedBox(height: 20,),
 
         //Email Input Field
         TextField(
@@ -121,7 +145,7 @@ class _InputFieldsState extends State<InputFields> {
             focusedBorder: UnderlineInputBorder(
                 borderSide: BorderSide(color: Cstmcolors.black)
             ),
-            icon: Icon(Icons.person, color: Cstmcolors.green,),
+            icon: Icon(Icons.email, color: Cstmcolors.green,),
             labelText: "Email",
             labelStyle: TextStyle(
               color: Cstmcolors.black,
@@ -168,7 +192,7 @@ class _InputFieldsState extends State<InputFields> {
 
         //Login Button
         ElevatedButton(
-            child: Text("SIGNUP", style: TextStyle(
+            child: Text("ERSTELLEN", style: TextStyle(
               color: Cstmcolors.black,
               fontSize: 15,
             ),),
@@ -185,6 +209,7 @@ class _InputFieldsState extends State<InputFields> {
             onPressed: () async {
 ;
               final msg = await AuthService().registration(
+                userName: _userNameController.text,
                 email: _emailController.text,
                 password: _passwordController.text,
               );

@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:pfadi_uro/pages/auth_service.dart';
+import 'package:pfadi_uro/pages/Services/auth_service.dart';
 import 'package:pfadi_uro/pages/home.dart';
 import 'package:pfadi_uro/pages/start/signup.dart';
 
@@ -29,7 +29,7 @@ class LoginView extends StatelessWidget {
 
                   SizedBox(height: 70,),
 
-                  const Text("LOGIN", style: TextStyle(
+                  const Text("ANMELDEN", style: TextStyle(
                     fontSize: 35,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 2,
@@ -199,7 +199,7 @@ class _InputFieldsState extends State<InputFields> {
 
         //Login Button
         ElevatedButton(
-          child: Text("LOGIN", style: TextStyle(
+          child: Text("FERTIG", style: TextStyle(
             color: Cstmcolors.black,
             fontSize: 15,
           ),),

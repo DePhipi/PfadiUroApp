@@ -23,7 +23,7 @@ void main() async{
       fontFamily: GoogleFonts.josefinSans().fontFamily,
     ),
 
-    home: Home(),
+    home: LoginView(),
   ));
 }
 
@@ -93,66 +93,3 @@ class SandBox extends StatelessWidget {
     );
   }
 }
-
-
-class PasswordTextField extends StatefulWidget {
-  @override
-  _PasswordTextFieldState createState() => _PasswordTextFieldState();
-}
-
-class _PasswordTextFieldState extends State<PasswordTextField> {
-  String password = ''; // Initialize the password variable
-  bool showPassword = false; // Initialize the showPassword flag
-
-  void toggleShowPassword() {
-    setState(() {
-      showPassword = !showPassword; // Toggle the showPassword flag
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Password TextField Example'), // Set the app bar title
-      ),
-      body: Center(
-        child: Padding(
-          padding: EdgeInsets.all(20.0),
-          child: Column(
-            children: <Widget>[
-              TextField(
-                obscureText: !showPassword, // Toggle password visibility
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                  hintText: 'Enter your password',
-                ),
-                onChanged: (value) {
-                  setState(() {
-                    password = value; // Update the password when input changes
-                  });
-                },
-              ),
-              SizedBox(height: 10.0), // Add spacing
-              ElevatedButton(
-                // Call toggleShowPassword when pressed
-                onPressed: toggleShowPassword,
-
-                // Change button label based on showPassword flag
-                child: Text(showPassword ? 'Hide Password' : 'Show Password'),
-              ),
-              SizedBox(height: 10.0), // Add spacing
-              Text(
-                // Display the password or asterisks based on showPassword
-                'Password: ${showPassword ? password : '******'}',
-                // Apply text style
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-

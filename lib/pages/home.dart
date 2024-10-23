@@ -6,6 +6,7 @@ import 'package:pfadi_uro/pages/start/login.dart';
 
 import 'package:pfadi_uro/pres/cstm_colors.dart';
 
+import 'Services/db_service.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -83,11 +84,8 @@ class HomeView extends StatelessWidget {
                   end_loc: "Bahnhof Urdorf",
                   start_time: "13:00",
                   end_time: "17:00",
-                  gestureTapCallback: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const Home()),
-                    );
+                  gestureTapCallback: () async {
+                    print(DBService().fetchUsers());
                   }
               ),
 
