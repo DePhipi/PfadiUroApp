@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pfadi_uro/pages/home.dart';
+import 'package:pfadi_uro/pages/home/home.dart';
 
-import '../../../pres/cstm_colors.dart';
+import '../../../presets/cstm_colors.dart';
 
 class BiberAnschlaege extends StatelessWidget {
   const BiberAnschlaege({super.key});

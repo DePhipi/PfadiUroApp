@@ -2,9 +2,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:pfadi_uro/pages/start/login.dart';
 
-import '../../pres/cstm_colors.dart';
+import '../../presets/cstm_colors.dart';
 import '../Services/auth_service.dart';
-import '../home.dart';
+import '../home/home.dart';
 
 class SignUpView extends StatelessWidget {
   const SignUpView({super.key});
@@ -12,31 +12,34 @@ class SignUpView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      resizeToAvoidBottomInset: false,
       backgroundColor: Cstmcolors.green,
 
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(30, 120, 30, 120),
+          padding: const EdgeInsets.fromLTRB(30, 100, 30, 100),
           child: Card(
             child: Padding(
-              padding: const EdgeInsets.all(40),
+              padding: const EdgeInsets.all(30),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
 
                 children: [
-
-                  const SizedBox(height: 70,),
-
-                  const Text("ACCOUNT ERSTELLEN", style: TextStyle(
-                    fontSize: 35,
+                  const Text("ACCOUNT", style: TextStyle(
+                    fontSize: 30,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 2,
                   ),),
 
-                  const SizedBox(height: 80,),
+                  const Text("ERSTELLEN", style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 2,
+                  ),),
 
-                  // Password Input Field
+                  const SizedBox(height: 40,),
+
+                  // Input Fields
                   const InputFields(),
 
                   const SizedBox(height: 20,),
@@ -46,7 +49,10 @@ class SignUpView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
 
                     children: [
-                      const Text("Du hast schon einen Account?"),
+                      Text("Bereits einen Account?", style: TextStyle(
+                        color: Cstmcolors.black,
+                        fontSize: 13,
+                      ),),
 
                       const SizedBox(width: 5,),
 
@@ -57,6 +63,7 @@ class SignUpView extends StatelessWidget {
                                     text: "Anmelden",
                                     style: TextStyle(
                                       color: Cstmcolors.gray,
+                                      fontSize: 13,
                                       decoration: TextDecoration.underline,
                                     ),
 
@@ -131,7 +138,7 @@ class _InputFieldsState extends State<InputFields> {
           ),
         ),
 
-        const SizedBox(height: 20,),
+        const SizedBox(height: 5,),
 
         //Email Input Field
         TextField(
@@ -154,7 +161,7 @@ class _InputFieldsState extends State<InputFields> {
           ),
         ),
 
-        const SizedBox(height: 20,),
+        const SizedBox(height: 5,),
 
         //Password Input Field
         TextField(
@@ -188,7 +195,7 @@ class _InputFieldsState extends State<InputFields> {
           ),
         ),
 
-        const SizedBox(height: 50,),
+        const SizedBox(height: 30,),
 
         //Login Button
         ElevatedButton(

@@ -1,12 +1,16 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:pfadi_uro/pages/Services/db_service.dart';
 import 'package:pfadi_uro/pages/Stuffen/anschlaege/biber.dart';
+import 'package:pfadi_uro/pages/home/profile.dart';
 import 'package:pfadi_uro/pages/start/login.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
 
-import 'package:pfadi_uro/pres/cstm_colors.dart';
-
-import 'Services/db_service.dart';
+import '../../presets/cstm_colors.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -21,6 +25,8 @@ class Home extends StatelessWidget {
       // Bottom Nav Bar
       bottomNavigationBar: BottomNavBar(),
     );
+
+
   }
 }
 
@@ -85,7 +91,6 @@ class HomeView extends StatelessWidget {
                   start_time: "13:00",
                   end_time: "17:00",
                   gestureTapCallback: () async {
-                    print(DBService().fetchUsers());
                   }
               ),
 
@@ -143,20 +148,33 @@ class TopBar extends StatelessWidget {
       child: Column(
         children: [
 
+          SizedBox(height: 30,),
+
           //Menu Buttons
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
 
-              IconButton(
-                icon: Icon(Icons.account_circle, color: Cstmcolors.dark_green),
-                onPressed: () { //#Todo Button Functionality
-                },
+              Builder(
+                builder: (context) {
+                  return IconButton(
+                    icon: Icon(
+                      Icons.account_circle, color: Cstmcolors.dark_green,
+                      size: 30,),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const ProfileView()),
+                      );
+                      print("open");
+                    },
+                  );
+                }
               ),
 
               IconButton(
-                icon: Icon(Icons.settings, color: Cstmcolors.black),
-                onPressed: () { //#Todo Button Functionality
+                icon: Icon(Icons.settings, color: Cstmcolors.black, size: 30,),
+                onPressed: () {
                 },
               )
             ],
@@ -175,11 +193,27 @@ class TopBar extends StatelessWidget {
                     fontSize: 30,
                   ),),
 
-                  Text("Travo!", style: TextStyle( //#Todo get name from Database
-                    color: Cstmcolors.black,
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                  ),),
+                  FutureBuilder<String>(
+                    future: DBService.fetchUsers(),
+
+                    builder: (BuildContext context, AsyncSnapshot snapshot) {
+                      if (snapshot.connectionState == ConnectionState.done) {
+                        if (snapshot.data == null) {
+                          return Text('no data');
+                        } else {
+                          return Text(snapshot.data, style: TextStyle( //#Todo get name from Database
+                            color: Cstmcolors.black,
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                          ),);
+                        }
+                      } else if (snapshot.connectionState == ConnectionState.none) {
+                        return Text('Error'); // error
+                      } else {
+                        return CircularProgressIndicator(); // loading
+                      }
+                    },
+                  ),
 
                 ],
               ),
@@ -200,8 +234,23 @@ class TopBar extends StatelessWidget {
       ),
     );
   }
-}
 
+  _fetch() async {
+    final currentUser = FirebaseAuth.instance.currentUser;
+    final currentUserUid = FirebaseAuth.instance.currentUser!.uid.toString();
+
+    if (currentUser != null){
+      final ref = FirebaseDatabase.instance.ref();
+      final snapshot = await ref.child('users/$currentUserUid/name').get();
+      if (snapshot.exists) {
+        return snapshot.value.toString();
+      } else {
+        return("");
+      }
+    }
+
+  }
+}
 
 class AnschlagCard extends StatelessWidget {
   const AnschlagCard({

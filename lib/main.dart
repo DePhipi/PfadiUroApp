@@ -4,10 +4,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pfadi_uro/pages/start/login.dart';
 import 'package:pfadi_uro/pages/start/signup.dart';
-import 'package:pfadi_uro/pres/cstm_colors.dart';
+import 'package:pfadi_uro/presets/cstm_colors.dart';
 import 'firebase_options.dart';
 
-import 'package:pfadi_uro/pages/home.dart';
+import 'package:pfadi_uro/pages/home/home.dart';
 
 
 void main() async{

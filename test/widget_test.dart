@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:pfadi_uro/main.dart';
-import 'package:pfadi_uro/pages/start/tabbar.dart';
+import 'package:pfadi_uro/pages/home/home.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {

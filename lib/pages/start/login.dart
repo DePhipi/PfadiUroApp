@@ -1,10 +1,10 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:pfadi_uro/pages/Services/auth_service.dart';
-import 'package:pfadi_uro/pages/home.dart';
+import 'package:pfadi_uro/pages/home/home.dart';
 import 'package:pfadi_uro/pages/start/signup.dart';
 
-import 'package:pfadi_uro/pres/cstm_colors.dart';
+import 'package:pfadi_uro/presets/cstm_colors.dart';
 
 
 class LoginView extends StatelessWidget {
@@ -13,29 +13,29 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      resizeToAvoidBottomInset: false,
       backgroundColor: Cstmcolors.green,
 
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(30, 120, 30, 120),
+          padding: const EdgeInsets.fromLTRB(20, 100, 20, 100),
           child: Card(
             child: Padding(
-              padding: const EdgeInsets.all(40),
+              padding: const EdgeInsets.all(30),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
           
                 children: [
 
-                  SizedBox(height: 70,),
+                  SizedBox(height: 30,),
 
                   const Text("ANMELDEN", style: TextStyle(
-                    fontSize: 35,
+                    fontSize: 30,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 2,
                   ),),
 
-                  SizedBox(height: 120,),
+                  SizedBox(height: 70,),
 
                   // Password Input Field
                   const InputFields(),
@@ -195,7 +195,7 @@ class _InputFieldsState extends State<InputFields> {
           ],
         ),
 
-        const SizedBox(height: 50,),
+        const SizedBox(height: 40,),
 
         //Login Button
         ElevatedButton(
