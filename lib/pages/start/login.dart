@@ -57,7 +57,7 @@ class LoginView extends StatelessWidget {
                             TextSpan(
                               text: "Account erstellen",
                               style: TextStyle(
-                                color: Cstmcolors.gray,
+                                color: Cstmcolors.grey,
                                 decoration: TextDecoration.underline,
                               ),
 
@@ -177,7 +177,7 @@ class _InputFieldsState extends State<InputFields> {
                       TextSpan(
                           text: "Passwort vergessen?",
                           style: TextStyle(
-                            color: Cstmcolors.gray,
+                            color: Cstmcolors.grey,
                             decoration: TextDecoration.underline,
                           ),
 

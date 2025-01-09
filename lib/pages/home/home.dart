@@ -26,7 +26,6 @@ class Home extends StatelessWidget {
       bottomNavigationBar: BottomNavBar(),
     );
 
-
   }
 }
 
@@ -194,7 +193,7 @@ class TopBar extends StatelessWidget {
                   ),),
 
                   FutureBuilder<String>(
-                    future: DBService.fetchUsers(),
+                    future: DBService.fetchUserData('name'),
 
                     builder: (BuildContext context, AsyncSnapshot snapshot) {
                       if (snapshot.connectionState == ConnectionState.done) {
@@ -222,7 +221,7 @@ class TopBar extends StatelessWidget {
                 children: [
                   Text("Willkommen bei der Pfadi Uro", style: TextStyle(
                     fontSize: 15,
-                    color: Cstmcolors.gray,
+                    color: Cstmcolors.grey,
                   ),),
                 ],
               )
@@ -322,9 +321,9 @@ class AnschlagCard extends StatelessWidget {
 
                           const SizedBox(width: 10,),
 
-                          Icon(Icons.location_on, size: 17, color: Cstmcolors.gray,),
+                          Icon(Icons.location_on, size: 17, color: Cstmcolors.grey,),
                           Text(start_loc, style: TextStyle(
-                              color: Cstmcolors.gray,
+                              color: Cstmcolors.grey,
                               fontSize: 15
                           ),)
                         ],
@@ -345,9 +344,9 @@ class AnschlagCard extends StatelessWidget {
 
                           SizedBox(width: 10,),
 
-                          Icon(Icons.location_on, size: 17, color: Cstmcolors.gray,),
+                          Icon(Icons.location_on, size: 17, color: Cstmcolors.grey,),
                           Text(end_loc, style: TextStyle(
-                              color: Cstmcolors.gray,
+                              color: Cstmcolors.grey,
                               fontSize: 15
                           ),)
                         ],
@@ -446,33 +445,37 @@ class BottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GNav(
-      backgroundColor: Cstmcolors.white,
-      color: Cstmcolors.black,
-      activeColor: Cstmcolors.dark_green,
-      gap: 10,
-      tabs: const [
-        GButton(
-          icon: Icons.home_rounded,
-          text: "Home",
-        ),
-        GButton(
-          icon: Icons.article,
-          text: "Anschläge",
-        ),
-        GButton(
-          icon: Icons.people,
-          text: "Anmeldungen",
-        ),
-        GButton(
-          icon: Icons.calendar_month,
-          text: "Kalender",
-        ),
-        GButton(
-          icon: Icons.more_vert,
-          text: "Mehr",
-        ),
-      ],
+    return SafeArea(
+      child: GNav(
+        backgroundColor: Cstmcolors.white,
+        color: Cstmcolors.black,
+        activeColor: Cstmcolors.dark_green,
+        gap: 10,
+        //iconSize: 20,
+        //textSize: 5,
+        tabs: const [
+          GButton(
+            icon: Icons.home_rounded,
+            text: "Home",
+          ),
+          GButton(
+            icon: Icons.article,
+            text: "Anschläge",
+          ),
+          GButton(
+            icon: Icons.people,
+            text: "Anmeldungen",
+          ),
+          GButton(
+            icon: Icons.calendar_month,
+            text: "Kalender",
+          ),
+          GButton(
+            icon: Icons.more_vert,
+            text: "Mehr",
+          ),
+        ],
+      ),
     );
   }
 }

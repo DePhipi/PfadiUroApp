@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pfadi_uro/pages/Services/db_service.dart';
+import 'package:pfadi_uro/pages/Stuffen/anschlaege/biber.dart';
 import 'package:pfadi_uro/pages/start/login.dart';
 import 'package:pfadi_uro/pages/start/signup.dart';
 import 'package:pfadi_uro/presets/cstm_colors.dart';
@@ -11,6 +13,7 @@ import 'package:pfadi_uro/pages/home/home.dart';
 
 
 void main() async{
+
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp(
@@ -23,10 +26,9 @@ void main() async{
       fontFamily: GoogleFonts.josefinSans().fontFamily,
     ),
 
-    home: LoginView(),
+    home: const BiberAnschlaege(),
   ));
 }
-
 
 class SandBox extends StatelessWidget {
   const SandBox({super.key});

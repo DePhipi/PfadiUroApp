@@ -62,7 +62,7 @@ class SignUpView extends StatelessWidget {
                                 TextSpan(
                                     text: "Anmelden",
                                     style: TextStyle(
-                                      color: Cstmcolors.gray,
+                                      color: Cstmcolors.grey,
                                       fontSize: 13,
                                       decoration: TextDecoration.underline,
                                     ),

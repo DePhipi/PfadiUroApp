@@ -3,14 +3,17 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:pfadi_uro/pages/Services/db_service.dart';
 
 class AuthService {
+
   Future<String?> registration({
     required String userName,
     required String email,
     required String password,
   }) async {
+
     try {
+
       UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: email,
+        email: email.trim(),
         password: password,
       );
 
@@ -21,6 +24,7 @@ class AuthService {
       DBService().addUser(uid, userName);
 
       return 'Success';
+
     } on FirebaseAuthException catch (e) {
       // Handle specific Firebase authentication errors
       if (e.code == 'weak-password') {
@@ -36,6 +40,7 @@ class AuthService {
     }
   }
 
+
   Future<void> writeUserData(String uid, Map<String, dynamic> user) async {
     print(uid + user.toString());
 
@@ -43,16 +48,22 @@ class AuthService {
     await FirebaseFirestore.instance.collection('users').doc(uid).set(user);
   }
 
+
   Future<String?> login({
+
     required String email,
     required String password,
+
   }) async {
+
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: email,
+        email: email.trim(),
         password: password,
       );
+
       return 'Success';
+
     } on FirebaseAuthException catch (e) {
       // Handle specific authentication errors
       if (e.code == 'user-not-found') {

@@ -15,74 +15,65 @@ class BiberAnschlaege extends StatelessWidget {
         child: Column(
           children: [
 
-            const TopBar(),
+            SizedBox(height: 10,),
 
-            const SizedBox(height: 20,),
+            Container(
+              child: Align(
+                alignment: Alignment.topLeft,
 
-            Padding(
-              padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+                child: IconButton(
+                  icon: const Icon(Icons.arrow_back),
+                  color: Cstmcolors.black,
+                  iconSize: 25,
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ),
+            ),
+
+            SizedBox(height: 20,),
+
+            Align(
+              alignment: Alignment.topLeft,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+
                 children: [
+                  Text("Biber", style: TextStyle(
+                      color: Cstmcolors.black,
+                      fontSize: 50
+                  ),),
+                  Text("25.04", style: TextStyle(
+                      color: Cstmcolors.grey,
+                      fontSize: 25
+                  ),),
+                ],
+              ),
+            ),
 
-                  Container(
-                    decoration: BoxDecoration(
-                        color: Cstmcolors.dark_green,
-                        borderRadius: const BorderRadius.all(Radius.circular(12))
-                        ),
 
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
 
-                          const SizedBox(height: 10,),
+            const SizedBox(height: 30,),
 
-                          Row(
-                            children: [
-                              Text("start_time", style: TextStyle(
-                                  color: Cstmcolors.white,
-                                  fontSize: 25
-                              ),),
+            Expanded(
+              child: Container(
+                width: double.infinity,
+                height: 700,
+              
+                decoration: BoxDecoration(
+                  color: Cstmcolors.black,
+                  borderRadius: const BorderRadius.only(
+                    topRight: Radius.circular(22),
+                    topLeft: Radius.circular(22)
+                  )
+                ),
 
-                              const SizedBox(width: 10,),
+                child: const Column(
+                  children: [
 
-                              Icon(Icons.location_on, size: 25, color: Cstmcolors.green,),
-                              Text("start_loc", style: TextStyle(
-                                  color: Cstmcolors.green,
-                                  fontSize: 25
-                              ),)
-                            ],
-                          ),
-
-                          Icon(Icons.more_vert,
-                            color: Cstmcolors.white,
-                          ),
-
-                          Row(
-                            children: [
-                              Text("end_time", style: TextStyle(
-                                  color: Cstmcolors.white,
-                                  fontSize: 25
-                              ),),
-
-                              const SizedBox(width: 10,),
-
-                              Icon(Icons.location_on, size: 25, color: Cstmcolors.green,),
-                              Text("end_loc", style: TextStyle(
-                                  color: Cstmcolors.green,
-                                  fontSize: 25
-                              ),)
-                            ],
-                          ),
-
-                          const SizedBox(height: 10,)
-
-                        ],
-                      ),
-                    ),
-
-                ),]
+                  ],
+                ),
               ),
             ),
           ],
@@ -91,59 +82,3 @@ class BiberAnschlaege extends StatelessWidget {
     );
   }
 }
-
-
-class TopBar extends StatelessWidget {
-  const TopBar({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-            color: Cstmcolors.white,
-            borderRadius: const BorderRadius.only(
-              bottomLeft: Radius.circular(12),
-              bottomRight: Radius.circular(12),
-            )
-        ),
-
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-
-            children: [
-              const SizedBox(height: 10,),
-              IconButton(
-                icon: const Icon(Icons.arrow_back),
-                color: Cstmcolors.black,
-                iconSize: 25,
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-
-              const SizedBox(height: 5,),
-
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-
-                children: [
-                  Text("Biber", style: TextStyle(
-                    fontSize: 25,
-                  ),),
-
-                  SizedBox(height: 5,),
-                ],
-              ),
-            ],
-          ),
-        )
-
-
-
-    );
-  }
-}
-
