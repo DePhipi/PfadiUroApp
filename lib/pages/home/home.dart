@@ -9,6 +9,8 @@ import 'package:pfadi_uro/pages/home/profile.dart';
 import 'package:pfadi_uro/pages/start/login.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:pfadi_uro/pages/stuffen/anschlaege/pfadis.dart';
+import 'package:pfadi_uro/pages/stuffen/anschlaege/woelfe.dart';
 
 import '../../presets/cstm_colors.dart';
 
@@ -89,7 +91,11 @@ class HomeView extends StatelessWidget {
                   end_loc: "Bahnhof Urdorf",
                   start_time: "13:00",
                   end_time: "17:00",
-                  gestureTapCallback: () async {
+                  gestureTapCallback: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const WoelfeAnschlaege()),
+                    );
                   }
               ),
 
@@ -104,7 +110,7 @@ class HomeView extends StatelessWidget {
                   gestureTapCallback: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const Home()),
+                      MaterialPageRoute(builder: (context) => const PfadiAnschlaege()),
                     );
                   }
               ),
@@ -457,10 +463,6 @@ class BottomNavBar extends StatelessWidget {
           GButton(
             icon: Icons.home_rounded,
             text: "Home",
-          ),
-          GButton(
-            icon: Icons.article,
-            text: "Anschläge",
           ),
           GButton(
             icon: Icons.people,

@@ -26,7 +26,7 @@ void main() async{
       fontFamily: GoogleFonts.josefinSans().fontFamily,
     ),
 
-    home: const BiberAnschlaege(),
+    home: const Home(),
   ));
 }
 

@@ -23,21 +23,20 @@ class DBService {
 
 
   //Get Data from DB
-  static Future<String> fetchData (String collection, String document, String field) async{
+  static Future<String> fetchData(String collection, String document, String field) async {
 
     DocumentSnapshot doc = await FirebaseFirestore.instance
-    .collection(collection)
-    .doc(document)
-    .get();
+        .collection(collection)
+        .doc(document)
+        .get();
 
     if (doc.exists) {
       return doc[field] as String;
     } else {
-      throw Exception("Document not existing");
+      throw Exception("Doc not existing");
     }
 
-}
-
+  }
 
   //Get Data from user
   static Future<String> fetchUserData(String field) async{
