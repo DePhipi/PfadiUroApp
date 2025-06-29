@@ -77,6 +77,3 @@ class DBService {
         .catchError((error) => print("Failed to delete user: $error"));
   }
 }
-
-//https://firebase.flutter.dev/docs/database/read-and-write/
-//https://medium.com/@samra.sajjad0001/getting-started-with-firebase-firestore-in-flutter-a-comprehensive-guide-with-crud-operations-ec75f2188355
